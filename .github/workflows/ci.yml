@@ -1,0 +1,24 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      # This is the art build gate itself: EndToEndCorpusTests fails the
+      # job (non-zero `dotnet test` exit) if the readability check's catch
+      # rate or false-flag rate drifts outside the measured bounds in
+      # README Findings. A real integration would call
+      # ArtBuildGate.Cli against the actual changed-asset set in a PR and
+      # fail the art build on any newly flagged pair; this workflow runs
+      # the same check against the synthetic 240-asset corpus instead,
+      # since that is the only asset library this repo has.
+      - name: dotnet test
+        run: dotnet test --logger "console;verbosity=normal"

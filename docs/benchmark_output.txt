@@ -1,0 +1,21 @@
+﻿=== full (cold cache) ===
+library: 240 assets, 40 planted near-duplicate pairs
+render: 322.5 ms total, 240/240 cache misses (rasterized), 0 cache hits
+gate: 247.6 ms, 68 pairs flagged over 240 assets (28680 pairs compared)
+planted pairs caught: 38/40
+false flags (pairs flagged that were not planted near-duplicates): 30
+
+=== rerun (warm cache, 0 mutated) ===
+library: 240 assets, 40 planted near-duplicate pairs
+render: 30.8 ms total, 0/240 cache misses (rasterized), 240 cache hits
+gate: 188.2 ms, 68 pairs flagged over 240 assets (28680 pairs compared)
+planted pairs caught: 38/40
+false flags (pairs flagged that were not planted near-duplicates): 30
+
+=== rerun (warm cache, 5 mutated) ===
+library: 240 assets, 40 planted near-duplicate pairs
+mutated 5 assets before this run
+render: 39.7 ms total, 5/240 cache misses (rasterized), 235 cache hits
+gate: 180.2 ms, 64 pairs flagged over 240 assets (28680 pairs compared)
+planted pairs caught: 37/40
+false flags (pairs flagged that were not planted near-duplicates): 27

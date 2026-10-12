@@ -1,0 +1,23 @@
+Threshold sweep over the 240-asset corpus (seed 20261012), mean
+intersection-over-union across all 8 angles, after fixing the base-index
+collision bug described in README Findings. 40 planted near-duplicate
+pairs, 28,640 non-planted pairs.
+
+MEAN threshold 0.950: caught 39/40, false 56/28640
+MEAN threshold 0.955: caught 39/40, false 40/28640
+MEAN threshold 0.958: caught 39/40, false 32/28640
+MEAN threshold 0.959: caught 38/40, false 31/28640
+MEAN threshold 0.960: caught 38/40, false 30/28640
+MEAN threshold 0.965: caught 36/40, false 22/28640
+MEAN threshold 0.970: caught 36/40, false 10/28640
+MEAN threshold 0.975: caught 35/40, false 7/28640
+MEAN threshold 0.980: caught 34/40, false 3/28640
+MEAN threshold 0.982: caught 32/40, false 2/28640
+MEAN threshold 0.984: caught 30/40, false 0/28640
+
+No threshold reaches both "most of 40 caught" and "0 false flags" at once:
+distinct-pair mean IoU tops out at 0.9837 and planted-pair mean IoU bottoms
+out at 0.9263, and the two distributions overlap between those values. The
+gate (ReadabilityGate.Threshold = 0.96) is set at the catch-rate/false-flag
+tradeoff point this project reports in its README, not at the 0-false-flag
+point (0.984, which only catches 30/40). See README Findings.
